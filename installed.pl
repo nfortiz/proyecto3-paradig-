@@ -5,14 +5,12 @@ installed('p2', '3.8.9').
 installed('p3', '2.1.7').
 
 %install-p/5(package_name, version).
-install-p(X):-display(X).
+install-p(Package,Version,Flag):-not(installed(Package, Version)), findall(dep(X,Y), depends(Package,Version,X,Y,Z),K ),display(K).% install(Package, Version).
 
 %install/5(package_name, version).
-%install(Package, Version):- depends(Package,Version,X,Y,Z), install(X,Y),install(Package, Version).
-install(Package,Version):-not(installed(Package, Version)), findall(dep(X,Y), depends(Package,Version,X,Y,Z),K ),display(K).% install(Package, Version).
-install(Package, Version):- not(installed(Package, Version)),
-                            asserta(installed(Package, Version)).%Si no debe agregarlo
-install(Package, Version):- installed(Package,Version),!.%Verifica que exista el paquete
+install(Package, Version,Flag):- not(installed(Package, Version)),
+                            asserta(installed(Package, Version)),!.%Si no debe agregarlo
+install(Package, Version,Flag):- installed(Package,Version),!.%Verifica que exista el paquete
 
 
 %depends(package, version, name, version, flag).

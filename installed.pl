@@ -73,7 +73,11 @@ K == 10 ->
 %Test
 %installed(X,Y).%Obtiene los paquetes instalados
 %install_p(Package,Version).%Instala un paquete con la version dada junto con todas las dependencias de este, del mismo modo verifica si existen paquetes compatibles con la version dado el flag
+%install(Package, Version,Flag).%Instala o no un paquete dado.
 %depends('p10', '3.2.3', X,Y,Z).%Determina los paquetes de los cuales depende p10
 %get_version(Version, Flag, R).%Apartir de la version y el flag, se entrega una lista R con las versiones compatibles
 
 
+%%Hecho por 
+%%Nixon Fernando Ortiz Suarez
+%%Esteban Reyes Marcelo
